@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A simple to-do list that saves tasks in your browser.">
+  <title>Daily list | To-do</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="app-shell">
+    <header class="app-header">
+      <div>
+        <p class="eyebrow">Your day, in focus</p>
+        <h1>Daily list<span class="accent">.</span></h1>
+      </div>
+      <div class="date-stamp" id="dateStamp" aria-label="Today's date"></div>
+    </header>
+
+    <section class="summary" aria-label="Task summary">
+      <div>
+        <p class="summary-label">Today's progress</p>
+        <p class="summary-value"><span id="completedCount">0</span> <span class="summary-muted">of</span> <span id="totalCount">0</span></p>
+      </div>
+      <div class="progress-track" aria-hidden="true"><span id="progressBar"></span></div>
+      <p class="progress-copy" id="progressCopy">A clear start.</p>
+    </section>
+
+    <section class="task-panel" aria-labelledby="taskHeading">
+      <div class="panel-heading">
+        <h2 id="taskHeading">Tasks</h2>
+        <button class="text-button" id="clearCompleted" type="button">Clear completed</button>
+      </div>
+
+      <form class="add-form" id="addForm">
+        <label class="sr-only" for="taskInput">Add a task</label>
+        <input id="taskInput" name="task" type="text" maxlength="120" placeholder="What needs doing?" autocomplete="off" required>
+        <button class="add-button" type="submit"><span aria-hidden="true">+</span> Add task</button>
+      </form>
+
+      <div class="filters" role="group" aria-label="Filter tasks">
+        <button class="filter-button active" type="button" data-filter="all" aria-pressed="true">All</button>
+        <button class="filter-button" type="button" data-filter="active" aria-pressed="false">Active</button>
+        <button class="filter-button" type="button" data-filter="completed" aria-pressed="false">Completed</button>
+      </div>
+
+      <ul class="task-list" id="taskList" aria-live="polite"></ul>
+      <div class="empty-state" id="emptyState" hidden>
+        <span class="empty-mark" aria-hidden="true">○</span>
+        <p id="emptyTitle">Nothing here yet.</p>
+        <span id="emptyCopy">Add your first task above and make the day yours.</span>
+      </div>
+    </section>
+
+    <footer class="app-footer">
+      <span>Saved automatically in this browser</span>
+      <button class="icon-button" id="clearAll" type="button" aria-label="Delete all tasks" title="Delete all tasks">Delete all</button>
+    </footer>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
